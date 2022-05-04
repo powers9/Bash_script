@@ -1,0 +1,17 @@
+-----------check if link is accessible at port --------
+nc -z -v {{ip address}} {port no}
+
+----------- find command to get logs older than 30 days -----
+find /dirpath -type f -mtime +30
+----------- find command to get logs older than 30 days and delete --------
+find /dirpath -type f -mtime +30 -delete
+
+--------------- list services running for particular user ------
+ps -u username
+--------------- grep to get running process by name ----
+ps aux | grep processname
+
+-------------- to check what process is executing at pid --
+ps -p pid -o command 
+
+
