@@ -1,0 +1,1 @@
+*/40 * * * * /Vkycdoc/IDFY/file.sh >> /Vkycdoc/IDFY/LogFile  2>&1  -- write the output/error log from sh execution to log file
