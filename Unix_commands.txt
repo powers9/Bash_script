@@ -14,4 +14,14 @@ ps aux | grep processname
 -------------- to check what process is executing at pid --
 ps -p pid -o command 
 
+------------- MFT process config----------
+/mftps/cfsend ip:192.168.0.1 port:8080 lf: /dataPath/filename rf: /remotedatapath/ uid:mftest pwd:mftest trynum: 3 ri:3 uperm: 775 ppa: "S, L, COMMAND, mv %LFILE /dataPath/otherFolder/";
 
+---------- include bash profile in script------
+. /home/user/.bash_profile
+
+---------- CURL request sample ----------
+ curl-v -i -–noproxy  '*' -XPOST -H "Content-type: application/json" -d {request body} 'service url'
+
+--------- resolve hostname--------
+nslookup hostname
