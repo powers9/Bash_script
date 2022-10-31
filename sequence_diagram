@@ -1,0 +1,50 @@
+https://sequencediagram.org/
+
+
+
+title CKYC Flow
+
+actor user
+participant PAN service
+participant CKYC search
+participant KARZA NAME MATCH
+participant CKYC download
+participant MULE/ESB
+
+
+database db
+
+
+user->PAN service:trigger service
+activate PAN service 
+PAN service->MULE/ESB:request
+activate MULE/ESB
+MULE/ESB->PAN service:response
+deactivate MULE/ESB
+PAN service->CKYC search:on succes
+activate CKYC search
+deactivate PAN service
+expandable- CKYC Process
+CKYC search->MULE/ESB:request
+activate MULE/ESB
+MULE/ESB->CKYC search:response
+deactivate MULE/ESB
+CKYC search->db:save CKYC search detail 
+CKYC search->KARZA NAME MATCH:on success
+deactivate CKYC search
+activate KARZA NAME MATCH
+KARZA NAME MATCH->MULE/ESB: reqeust(name match between PAN and CKYC)
+activate MULE/ESB
+MULE/ESB->KARZA NAME MATCH: response
+deactivate MULE/ESB
+KARZA NAME MATCH->CKYC download:on sucess
+deactivate KARZA NAME MATCH
+activate CKYC download
+CKYC download->MULE/ESB: request
+activate MULE/ESB
+MULE/ESB->CKYC download: response
+deactivate MULE/ESB
+CKYC download->db: save customer CKYC detail
+CKYC download->user: on success
+deactivate CKYC download
+end
