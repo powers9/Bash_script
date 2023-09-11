@@ -25,3 +25,12 @@ ps -p pid -o command
 
 --------- resolve hostname--------
 nslookup hostname
+
+_----------- less navigation -----_
+less -N filename to see line number
+G end of file, g start of file
+b one frame back, space one frame fwd
+/ search keyword fwd
+? search keyword backward 
+n fwd sesrch navigation 
+N backward search navigation 
