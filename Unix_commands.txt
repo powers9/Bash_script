@@ -34,3 +34,5 @@ b one frame back, space one frame fwd
 ? search keyword backward 
 n fwd sesrch navigation 
 N backward search navigation 
+
+pwdx $(pgrep -u oracle-a |grep -i vTransa | awk '{print $1}')
