@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Check if the user provided a JAR path
+if [ -z "$1" ]; then
+    echo "Usage: $0 /path/to/your.jar"
+    exit 1
+fi
+
+# Get the full path and JAR name using parameter expansion (built-in)
+JAR_PATH="$1"
+JAR_NAME="${JAR_PATH##*/}"  # Extracts file name from the path
+
+# Check if the JAR is already running
+PID=$(pgrep -f "$JAR_PATH")
+
+if [ -n "$PID" ]; then
+    echo "The JAR $JAR_NAME is already running with PID $PID."
+else
+    echo "Starting $JAR_NAME..."
+    nohup java -jar "$JAR_PATH" > /dev/null 2>&1 &
+    echo "Started $JAR_NAME with PID $!"
+fi
